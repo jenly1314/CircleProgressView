@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleProgressView">
+        <attr name="cpvStrokeWidth" format="dimension"/>
+        <attr name="cpvNormalColor" format="color"/>
+        <attr name="cpvProgressColor" format="color"/>
+        <attr name="cpvStartAngle" format="integer"/>
+        <attr name="cpvSweepAngle" format="integer"/>
+        <attr name="cpvMax" format="integer"/>
+        <attr name="cpvProgress" format="integer"/>
+        <attr name="cpvDuration" format="integer"/>
+        <attr name="cpvLabelText" format="string"/>
+        <attr name="cpvLabelTextColor" format="color"/>
+        <attr name="cpvLabelTextSize" format="dimension"/>
+        <attr name="cpvShowLabel" format="boolean"/>
+        <attr name="cpvShowTick" format="boolean"/>
+        <attr name="cpvCirclePadding" format="dimension"/>
+        <attr name="cpvTickSplitAngle" format="integer"/>
+        <attr name="cpvBlockAngle" format="integer"/>
+
+    </declare-styleable>
+</resources>
