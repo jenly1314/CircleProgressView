@@ -7,18 +7,18 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/mit-license.php)
 [![Blog](https://img.shields.io/badge/blog-Jenly-9933CC.svg)](http://blog.csdn.net/jenly121)
 
-CircleProgressView for Android 是一个自定义圆形的进度动画控件，动画效果纵享丝滑。
+CircleProgressView for Android 是一个圆形的进度动画控件，动画效果纵享丝滑。
 
 ## Gif 展示
 ![Image](GIF.gif)
 
 
-## 自定义属性说明（默认渐变）
+## CircleProgressView自定义属性说明（进度默认渐变色）
 | 属性 | 值类型 | 默认值 | 说明 |
 | :------| :------ | :------ | :------ |
 | cpvStrokeWidth | dimension |12dp| 笔画描边的宽度 |
-| cpvNormalColor | color |<font color=#0xC8C8C8>#FFC8C8C8</font>| 圆正常颜色 |
-| cpvProgressColor | color |<font color=0x4FEAAC>#FF4FEAAC</font>| 圆进度颜色 |
+| cpvNormalColor | color |<font color=#C8C8C8>#FFC8C8C8</font>| 圆正常颜色 |
+| cpvProgressColor | color |<font color=#4FEAAC>#FF4FEAAC</font>| 圆进度颜色 |
 | cpvStartAngle | integer | 270 | 开始角度，默认十二点钟方向 |
 | cpvSweepAngle | integer | 360 | 扫描角度范围 |
 | cpvMax | integer | 100 | 进度最大值 |
@@ -85,6 +85,8 @@ compileOnly 'com.android.support:appcompat-v7:28.0.0'
 ```Java
     //显示进度动画，进度，动画时长
     circleProgressView.showAnimation(80,3000);
+    //设置当前进度
+    circleProgressView.setProgress(80);
 
 ```
 
