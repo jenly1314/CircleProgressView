@@ -33,6 +33,7 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 | cpvCirclePadding | dimension | 10dp | 外圆环刻度与内圆环间距 |
 | cpvTickSplitAngle | integer | 5 | 刻度间隔的角度大小 |
 | cpvBlockAngle | integer | 1 | 刻度的角度大小 |
+| cpvTurn | boolean | false | 是否旋转 |
 
 
 ## 引入
@@ -42,18 +43,18 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 <dependency>
   <groupId>com.king.view</groupId>
   <artifactId>circleprogressview</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
 ### Gradle:
 ```gradle
-implementation 'com.king.view:circleprogressview:1.0.0'
+implementation 'com.king.view:circleprogressview:1.0.1'
 ```
 
 ### Lvy:
 ```lvy
-<dependency org='com.king.view' name='circleprogressview' rev='1.0.0'>
+<dependency org='com.king.view' name='circleprogressview' rev='1.0.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -92,6 +93,11 @@ compileOnly 'com.android.support:appcompat-v7:28.0.0'
 ```
 
 更多使用详情，请查看[app](app)中的源码使用示例
+
+## 版本记录
+
+#### v1.0.1：2019-5-23
+*  新增cpvTurn属性（是否旋转）
 
 #### v1.0.0：2019-2-17
 *  CircleProgressView初始版本

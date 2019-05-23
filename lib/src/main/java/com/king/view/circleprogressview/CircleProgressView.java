@@ -153,6 +153,12 @@ public class CircleProgressView extends View {
      */
     private boolean isShowTick = true;
 
+    /**
+     * 是否旋转
+     */
+    private boolean isTurn = false;
+
+
     private OnChangeListener mOnChangeListener;
 
 
@@ -220,6 +226,8 @@ public class CircleProgressView extends View {
                 mTickSplitAngle = a.getInt(attr,5);
             }else if(attr == R.styleable.CircleProgressView_cpvBlockAngle){
                 mBlockAngle = a.getInt(attr,1);
+            }else if(attr == R.styleable.CircleProgressView_cpvTurn){
+                isTurn = a.getBoolean(attr,false);
             }
         }
 
@@ -310,24 +318,48 @@ public class CircleProgressView extends View {
             RectF rectF = new RectF(tickStartX,tickStartY,tickStartX + tickDiameter,tickStartY + tickDiameter);
 
             final int currentBlockIndex = (int)(mProgressPercent / 100f * mTotalTickCount);
-            for (int i = 0; i < mTotalTickCount; i++) {
-                if( i < currentBlockIndex){
-                    //已选中的刻度
-                    if(isShader && mShader!=null){
-                        mPaint.setShader(mShader);
-                    }else{
-                        mPaint.setColor(mProgressColor);
-                    }
-                } else {
-                    //未选中的刻度
+            if(isTurn){
+                for (int i = 0; i < mTotalTickCount; i++) {
+                    //底层未选中刻度
                     mPaint.setShader(null);
                     mPaint.setColor(mNormalColor);
+                    //绘制外边框刻度
+                    canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
                 }
-                //绘制外边框刻度
-                canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+
+                for (int i = currentBlockIndex; i < currentBlockIndex + currentBlockIndex; i++) {
+                    //已选中的刻度
+                    if (isShader && mShader != null) {
+                        mPaint.setShader(mShader);
+                    } else {
+                        mPaint.setColor(mProgressColor);
+                    }
+                    //绘制外边框刻度
+                    canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+                }
+            }else{
+                for (int i = 0; i < mTotalTickCount; i++) {
+                    if (i < currentBlockIndex) {
+                        //已选中的刻度
+                        if (isShader && mShader != null) {
+                            mPaint.setShader(mShader);
+                        } else {
+                            mPaint.setColor(mProgressColor);
+                        }
+                    } else {
+                        //未选中的刻度
+                        mPaint.setShader(null);
+                        mPaint.setColor(mNormalColor);
+                    }
+                    //绘制外边框刻度
+                    canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+                }
             }
+
         }
 
+
+        mPaint.setShader(null);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setColor(mNormalColor);
 
@@ -348,9 +380,13 @@ public class CircleProgressView extends View {
             mPaint.setColor(mProgressColor);
         }
 
-        //绘制当前进度弧形
-        canvas.drawArc(rectF1,mStartAngle,mSweepAngle * getRatio(),false,mPaint);
-
+        if(isTurn){
+            //绘制当前进度弧形
+            canvas.drawArc(rectF1,mStartAngle + mSweepAngle * getRatio(),mSweepAngle * getRatio(),false,mPaint);
+        }else{
+            //绘制当前进度弧形
+            canvas.drawArc(rectF1,mStartAngle,mSweepAngle * getRatio(),false,mPaint);
+        }
 
     }
 
@@ -364,7 +400,7 @@ public class CircleProgressView extends View {
         }
         mTextPaint.reset();
         mTextPaint.setAntiAlias(true);
-        mTextPaint.setStyle(Paint.Style.STROKE);
+        mTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mTextPaint.setTextSize(mLabelTextSize);
         mTextPaint.setColor(mLabelTextColor);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
@@ -514,6 +550,15 @@ public class CircleProgressView extends View {
      */
     public void setShowTick(boolean isShowTick){
         this.isShowTick = isShowTick;
+        invalidate();
+    }
+
+    /**
+     * 设置是否旋转
+     * @param isTurn
+     */
+    public void setTurn(boolean isTurn){
+        this.isTurn = isTurn;
         invalidate();
     }
 

@@ -17,6 +17,7 @@
         <attr name="cpvCirclePadding" format="dimension"/>
         <attr name="cpvTickSplitAngle" format="integer"/>
         <attr name="cpvBlockAngle" format="integer"/>
+        <attr name="cpvTurn" format="boolean"/>
 
     </declare-styleable>
 </resources>

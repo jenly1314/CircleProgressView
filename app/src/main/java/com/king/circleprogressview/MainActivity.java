@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     private CircleProgressView cpv;
 
-    private CheckBox cb;
+    private CheckBox cbTick;
+    private CheckBox cbTurn;
 
     private int[] mShaderColors = new int[]{0xFF4FEAAC,0xFFA8DD51,0xFFE8D30F,0xFFA8DD51,0xFF4FEAAC};
 
@@ -22,13 +23,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         cpv = findViewById(R.id.cpv);
-        cb = findViewById(R.id.cb);
-        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cbTick = findViewById(R.id.cbTick);
+        cbTurn = findViewById(R.id.cbTurn);
+        cbTick.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 cpv.setShowTick(isChecked);
             }
         });
+
+        cbTurn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                cpv.setTurn(isChecked);
+            }
+        });
+
 
     }
 
