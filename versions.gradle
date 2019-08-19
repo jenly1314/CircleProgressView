@@ -1,7 +1,7 @@
 //App
 def app_version = [:]
-app_version.versionCode = 2
-app_version.versionName = "1.0.1"
+app_version.versionCode = 3
+app_version.versionName = "1.1.0"
 ext.app_version = app_version
 
 //build version
@@ -17,27 +17,27 @@ ext.deps = [:]
 // App dependencies
 def versions = [:]
 //support
-versions.supportLibrary = "28.0.0"
+versions.supportLibrary = "1.0.0+"
 versions.constraintLayout = "1.1.3"
 
 //test
 versions.junit = "4.12"
-versions.runner = "1.0.2"
-versions.espresso = "3.0.2"
+versions.runner = "1.1.2"
+versions.espresso = "3.2.0"
 
 
 //support
 def support = [:]
-support.design = "com.android.support:design:$versions.supportLibrary"
-support.appcompat = "com.android.support:appcompat-v7:$versions.supportLibrary"
-support.constraintlayout = "com.android.support.constraint:constraint-layout:$versions.constraintLayout"
+support.design = "com.google.android.material:material:$versions.supportLibrary"
+support.appcompat = "androidx.appcompat:appcompat:$versions.supportLibrary"
+support.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.constraintLayout"
 deps.support = support
 
 //test
 def test = [:]
 test.junit = "junit:junit:$versions.junit"
-test.runner = "com.android.support.test:runner:$versions.runner"
-test.espresso = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+test.runner = "androidx.test:runner:$versions.runner"
+test.espresso = "androidx.test.espresso:espresso-core:$versions.espresso"
 deps.test = test
 
 ext.deps = deps

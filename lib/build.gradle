@@ -11,7 +11,7 @@ android {
         versionCode app_version.versionCode
         versionName app_version.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
     buildTypes {
@@ -31,7 +31,5 @@ dependencies {
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso
-
-    compileOnly deps.support.appcompat
 
 }

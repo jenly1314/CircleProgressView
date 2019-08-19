@@ -1,5 +1,8 @@
 package com.king.view.circleprogressview;
 
+import java.lang.String;
+
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,15 +11,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
+
 
 /**
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -166,11 +167,11 @@ public class CircleProgressView extends View {
         this(context,null);
     }
 
-    public CircleProgressView(Context context, @Nullable AttributeSet attrs) {
+    public CircleProgressView(Context context, AttributeSet attrs) {
         this(context, attrs,0);
     }
 
-    public CircleProgressView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CircleProgressView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context,attrs);
     }
@@ -450,6 +451,17 @@ public class CircleProgressView extends View {
      * @param duration 动画时长
      */
     public void showAnimation(int from,int to,int duration){
+        showAnimation(from,to,duration,null);
+    }
+
+    /**
+     * 显示进度动画效果，从from到to变化
+     * @param from
+     * @param to
+     * @param duration 动画时长
+     * @param listener
+     */
+    public void showAnimation(int from, int to, int duration, Animator.AnimatorListener listener){
         this.mDuration = duration;
         this.mProgress = from;
         ValueAnimator valueAnimator = ValueAnimator.ofInt(from,to);
@@ -461,6 +473,11 @@ public class CircleProgressView extends View {
                 setProgress((int)animation.getAnimatedValue());
             }
         });
+
+        if(listener!=null){
+            valueAnimator.removeAllUpdateListeners();
+            valueAnimator.addListener(listener);
+        }
 
         valueAnimator.start();
     }
@@ -500,7 +517,7 @@ public class CircleProgressView extends View {
      * 设置正常颜色
      * @param color
      */
-    public void setNormalColor(@ColorInt int color){
+    public void setNormalColor(int color){
         this.mNormalColor = color;
         invalidate();
     }
@@ -520,7 +537,7 @@ public class CircleProgressView extends View {
      * 设置进度颜色（通过着色器实现渐变色）
      * @param colors
      */
-    public void setProgressColor(@ColorInt int... colors){
+    public void setProgressColor(int... colors){
         Shader shader = new SweepGradient(mCircleCenterX,mCircleCenterX,colors,null);
         setShader(shader);
     }
@@ -529,7 +546,7 @@ public class CircleProgressView extends View {
      * 设置进度颜色（纯色）
      * @param color
      */
-    public void setProgressColor(@ColorInt int color){
+    public void setProgressColor(int color){
         isShader = false;
         this.mProgressColor = color;
         invalidate();
@@ -539,7 +556,7 @@ public class CircleProgressView extends View {
      * 设置进度颜色
      * @param resId
      */
-    public void setProgressColorResource(@ColorRes int resId){
+    public void setProgressColorResource(int resId){
         int color = getResources().getColor(resId);
         setProgressColor(color);
     }
@@ -629,12 +646,12 @@ public class CircleProgressView extends View {
         return mLabelTextColor;
     }
 
-    public void setLabelTextColor(@ColorInt int labelTextColor) {
-        this.mLabelTextColor = labelTextColor;
+    public void setLabelTextColor(int color) {
+        this.mLabelTextColor = color;
         invalidate();
     }
 
-    public void setLabelTextColorResource(@ColorRes int resId){
+    public void setLabelTextColorResource(int resId){
         int color = getResources().getColor(resId);
         setLabelTextColor(color);
     }

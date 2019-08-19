@@ -1,11 +1,12 @@
 # CircleProgressView
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/CircleProgressView/master/app/release/app-release.apk)
-[![Jitpack](https://jitpack.io/v/jenly1314/CircleProgressView.svg)](https://jitpack.io/#jenly1314/CircleProgressView)
+[![JitPack](https://jitpack.io/v/jenly1314/CircleProgressView.svg)](https://jitpack.io/#jenly1314/CircleProgressView)
 [![CI](https://travis-ci.org/jenly1314/CircleProgressView.svg?branch=master)](https://travis-ci.org/jenly1314/CircleProgressView)
+[![CircleCI](https://circleci.com/gh/jenly1314/CircleProgressView.svg?style=svg)](https://circleci.com/gh/jenly1314/CircleProgressView)
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/mit-license.php)
-[![Blog](https://img.shields.io/badge/blog-Jenly-9933CC.svg)](http://blog.csdn.net/jenly121)
+[![Blog](https://img.shields.io/badge/blog-Jenly-9933CC.svg)](https://jenly1314.github.io/)
 [![QQGroup](https://img.shields.io/badge/QQGroup-20867961-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1411582c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad)
 
 CircleProgressView for Android 是一个圆形的进度动画控件，动画效果纵享丝滑。
@@ -43,18 +44,18 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 <dependency>
   <groupId>com.king.view</groupId>
   <artifactId>circleprogressview</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <type>pom</type>
 </dependency>
 ```
 ### Gradle:
 ```gradle
-implementation 'com.king.view:circleprogressview:1.0.1'
+implementation 'com.king.view:circleprogressview:1.1.0'
 ```
 
 ### Lvy:
 ```lvy
-<dependency org='com.king.view' name='circleprogressview' rev='1.0.1'>
+<dependency org='com.king.view' name='circleprogressview' rev='1.1.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -66,11 +67,6 @@ allprojects {
         maven { url 'https://dl.bintray.com/jenly/maven' }
     }
 }
-```
-
-## 引入的库：
-```gradle
-compileOnly 'com.android.support:appcompat-v7:28.0.0'
 ```
 
 ## 示例
@@ -96,6 +92,9 @@ compileOnly 'com.android.support:appcompat-v7:28.0.0'
 
 ## 版本记录
 
+#### v1.1.0：2019-8-19
+*  移除appcompat依赖，适配AndroidX
+
 #### v1.0.1：2019-5-23
 *  新增cpvTurn属性（是否旋转）
 
@@ -117,6 +116,8 @@ compileOnly 'com.android.support:appcompat-v7:28.0.0'
    Email: <a title="欢迎邮件与我交流" href="mailto:jenly1314@gmail.com" target="_blank">jenly1314#gmail.com</a> / <a title="给我发邮件" href="mailto:jenly1314@vip.qq.com" target="_blank">jenly1314#vip.qq.com</a>
 
    CSDN: <a title="CSDN博客" href="http://blog.csdn.net/jenly121" target="_blank">jenly121</a>
+
+   博客园: <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>
 
    Github: <a title="Github开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a>
 
