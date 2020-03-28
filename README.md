@@ -13,7 +13,8 @@
 CircleProgressView for Android 是一个圆形的进度动画控件，动画效果纵享丝滑。
 
 > **CircleProgressView**不能满足你的需求？
-也许你想要的是[ArcSeekBar](https://github.com/jenly1314/ArcSeekBar)
+
+ 也许你想要的是[ArcSeekBar](https://github.com/jenly1314/ArcSeekBar)
 
 ## Gif 展示
 ![Image](GIF.gif)
