@@ -1,6 +1,7 @@
 # CircleProgressView
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/CircleProgressView/master/app/release/app-release.apk)
+[![JCenter](https://img.shields.io/badge/JCenter-1.1.0-46C018.svg)](https://bintray.com/beta/#/jenly/maven/circleprogressview)
 [![JitPack](https://jitpack.io/v/jenly1314/CircleProgressView.svg)](https://jitpack.io/#jenly1314/CircleProgressView)
 [![CI](https://travis-ci.org/jenly1314/CircleProgressView.svg?branch=master)](https://travis-ci.org/jenly1314/CircleProgressView)
 [![CircleCI](https://circleci.com/gh/jenly1314/CircleProgressView.svg?style=svg)](https://circleci.com/gh/jenly1314/CircleProgressView)
@@ -10,6 +11,9 @@
 [![QQGroup](https://img.shields.io/badge/QQGroup-20867961-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1411582c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad)
 
 CircleProgressView for Android 是一个圆形的进度动画控件，动画效果纵享丝滑。
+
+> **CircleProgressView**不能满足你的需求？
+也许你想要的是[ArcSeekBar](https://github.com/jenly1314/ArcSeekBar)
 
 ## Gif 展示
 ![Image](GIF.gif)
@@ -118,7 +122,7 @@ allprojects {
 
    CSDN: <a title="CSDN博客" href="http://blog.csdn.net/jenly121" target="_blank">jenly121</a>
 
-   博客园: <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>
+   CNBlogs: <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>
 
    Github: <a title="Github开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a>
 
