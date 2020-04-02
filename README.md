@@ -1,7 +1,7 @@
 # CircleProgressView
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/CircleProgressView/master/app/release/app-release.apk)
-[![JCenter](https://img.shields.io/badge/JCenter-1.1.0-46C018.svg)](https://bintray.com/beta/#/jenly/maven/circleprogressview)
+[![JCenter](https://img.shields.io/badge/JCenter-1.1.1-46C018.svg)](https://bintray.com/beta/#/jenly/maven/circleprogressview)
 [![JitPack](https://jitpack.io/v/jenly1314/CircleProgressView.svg)](https://jitpack.io/#jenly1314/CircleProgressView)
 [![CI](https://travis-ci.org/jenly1314/CircleProgressView.svg?branch=master)](https://travis-ci.org/jenly1314/CircleProgressView)
 [![CircleCI](https://circleci.com/gh/jenly1314/CircleProgressView.svg?style=svg)](https://circleci.com/gh/jenly1314/CircleProgressView)
@@ -12,9 +12,9 @@
 
 CircleProgressView for Android 是一个圆形的进度动画控件，动画效果纵享丝滑。
 
-> **CircleProgressView**不能满足你的需求？
+> **CircleProgressView** 不能满足你的需求？
 
- 也许你想要的是[ArcSeekBar](https://github.com/jenly1314/ArcSeekBar)
+ 也许你想要的是 [ArcSeekBar](https://github.com/jenly1314/ArcSeekBar)
 
 ## Gif 展示
 ![Image](GIF.gif)
@@ -40,6 +40,11 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 | cpvTickSplitAngle | integer | 5 | 刻度间隔的角度大小 |
 | cpvBlockAngle | integer | 1 | 刻度的角度大小 |
 | cpvTurn | boolean | false | 是否旋转 |
+| cpvCapRound | boolean | true | 是否是圆形线冒（圆角弧度） |
+| arcLabelPaddingLeft | dimension |0dp| 文本居左边内间距 |
+| arcLabelPaddingTop | dimension |0dp| 文本居顶边内间距 |
+| arcLabelPaddingRight | dimension |0dp| 文本居右边内间距 |
+| arcLabelPaddingBottom | dimension |0dp| 文本居底边内间距 |
 
 
 ## 引入
@@ -49,18 +54,18 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 <dependency>
   <groupId>com.king.view</groupId>
   <artifactId>circleprogressview</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <type>pom</type>
 </dependency>
 ```
 ### Gradle:
 ```gradle
-implementation 'com.king.view:circleprogressview:1.1.0'
+implementation 'com.king.view:circleprogressview:1.1.1'
 ```
 
 ### Lvy:
 ```lvy
-<dependency org='com.king.view' name='circleprogressview' rev='1.1.0'>
+<dependency org='com.king.view' name='circleprogressview' rev='1.1.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -90,12 +95,17 @@ allprojects {
     circleProgressView.showAnimation(80,3000);
     //设置当前进度
     circleProgressView.setProgress(80);
+    //设置进度改变监听
+    circleProgressView.setOnChangeListener(onChangeListener);   
 
 ```
 
 更多使用详情，请查看[app](app)中的源码使用示例
 
 ## 版本记录
+
+#### v1.1.1：2020-4-2
+*  新增cpvLabelPadding..相关属性
 
 #### v1.1.0：2019-8-19
 *  移除appcompat依赖，适配AndroidX

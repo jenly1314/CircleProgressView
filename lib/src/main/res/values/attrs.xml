@@ -18,6 +18,11 @@
         <attr name="cpvTickSplitAngle" format="integer"/>
         <attr name="cpvBlockAngle" format="integer"/>
         <attr name="cpvTurn" format="boolean"/>
+        <attr name="cpvCapRound" format="boolean"/>
+        <attr name="cpvLabelPaddingLeft" format="dimension"/>
+        <attr name="cpvLabelPaddingTop" format="dimension"/>
+        <attr name="cpvLabelPaddingRight" format="dimension"/>
+        <attr name="cpvLabelPaddingBottom" format="dimension"/>
 
     </declare-styleable>
 </resources>

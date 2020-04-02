@@ -95,12 +95,12 @@ public class CircleProgressView extends View {
     /**
      * 刻度间隔的角度大小
      */
-    private float mTickSplitAngle = 5;
+    private int mTickSplitAngle = 5;
 
     /**
      * 刻度的角度大小
      */
-    private float mBlockAngle = 1;
+    private int mBlockAngle = 1;
 
     /**
      * 总刻度数
@@ -136,6 +136,15 @@ public class CircleProgressView extends View {
      * 字体颜色
      */
     private int mLabelTextColor = 0xFF333333;
+
+    /**
+     * 标签内容距圆形内间距
+     */
+    private float mLabelPaddingLeft;
+    private float mLabelPaddingTop;
+    private float mLabelPaddingRight;
+    private float mLabelPaddingBottom;
+
     /**
      * 进度百分比
      */
@@ -158,6 +167,11 @@ public class CircleProgressView extends View {
      * 是否旋转
      */
     private boolean isTurn = false;
+
+    /**
+     * 是否是圆形线冒（圆角弧度）
+     */
+    private boolean isCapRound = true;
 
 
     private OnChangeListener mOnChangeListener;
@@ -218,17 +232,27 @@ public class CircleProgressView extends View {
             }else if(attr == R.styleable.CircleProgressView_cpvLabelTextColor){
                 mLabelTextColor = a.getColor(attr,0xFF333333);
             }else if(attr == R.styleable.CircleProgressView_cpvShowLabel) {
-                isShowLabel = a.getBoolean(attr, true);
+                isShowLabel = a.getBoolean(attr, isShowLabel);
             }else if(attr == R.styleable.CircleProgressView_cpvShowTick){
-                isShowTick = a.getBoolean(attr,true);
+                isShowTick = a.getBoolean(attr,isShowTick);
             }else if(attr == R.styleable.CircleProgressView_cpvCirclePadding){
                 mCirclePadding = a.getDimension(attr,TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,10,displayMetrics));
             }else if(attr == R.styleable.CircleProgressView_cpvTickSplitAngle){
-                mTickSplitAngle = a.getInt(attr,5);
+                mTickSplitAngle = a.getInt(attr,mTickSplitAngle);
             }else if(attr == R.styleable.CircleProgressView_cpvBlockAngle){
-                mBlockAngle = a.getInt(attr,1);
+                mBlockAngle = a.getInt(attr,mBlockAngle);
             }else if(attr == R.styleable.CircleProgressView_cpvTurn){
-                isTurn = a.getBoolean(attr,false);
+                isTurn = a.getBoolean(attr,isTurn);
+            }else if(attr == R.styleable.CircleProgressView_cpvCapRound){
+                isCapRound = a.getBoolean(attr,isCapRound);
+            }else if(attr == R.styleable.CircleProgressView_cpvLabelPaddingLeft){
+                mLabelPaddingLeft = a.getDimension(attr,0);
+            }else if(attr == R.styleable.CircleProgressView_cpvLabelPaddingTop){
+                mLabelPaddingTop = a.getDimension(attr,0);
+            }else if(attr == R.styleable.CircleProgressView_cpvLabelPaddingRight){
+                mLabelPaddingRight = a.getDimension(attr,0);
+            }else if(attr == R.styleable.CircleProgressView_cpvLabelPaddingBottom){
+                mLabelPaddingBottom = a.getDimension(attr,0);
             }
         }
 
@@ -239,7 +263,7 @@ public class CircleProgressView extends View {
         mPaint = new Paint();
         mTextPaint = new TextPaint();
 
-        mTotalTickCount = (int)(mSweepAngle / (mTickSplitAngle + mBlockAngle));
+        mTotalTickCount = (int)(1.0f * mSweepAngle / (mTickSplitAngle + mBlockAngle));
 
     }
 
@@ -347,22 +371,25 @@ public class CircleProgressView extends View {
                         } else {
                             mPaint.setColor(mProgressColor);
                         }
-                    } else {
+                        //绘制外边框刻度
+                        canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+                    } else if(mNormalColor != 0){
                         //未选中的刻度
                         mPaint.setShader(null);
                         mPaint.setColor(mNormalColor);
+                        //绘制外边框刻度
+                        canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
                     }
-                    //绘制外边框刻度
-                    canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+
                 }
             }
 
         }
 
-
         mPaint.setShader(null);
-        mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setColor(mNormalColor);
+        if(isCapRound){
+            mPaint.setStrokeCap(Paint.Cap.ROUND);
+        }
 
         //进度圆半径
         float circleRadius = isShowTick ? mRadius - mCirclePadding - mStrokeWidth : mRadius;
@@ -371,8 +398,11 @@ public class CircleProgressView extends View {
         float startY = mCircleCenterY - circleRadius;
         RectF rectF1 = new RectF(startX,startY,startX + diameter,startY + diameter);
 
-        //绘制底层弧形
-        canvas.drawArc(rectF1,mStartAngle,mSweepAngle,false,mPaint);
+        if(mNormalColor != 0){
+            mPaint.setColor(mNormalColor);
+            //绘制底层弧形
+            canvas.drawArc(rectF1,mStartAngle,mSweepAngle,false,mPaint);
+        }
 
         //着色器不为空则设置着色器，反之用纯色
         if(isShader && mShader!=null){
@@ -410,11 +440,12 @@ public class CircleProgressView extends View {
         // 计算文字高度 
         float fontHeight = fontMetrics.bottom - fontMetrics.top;
         // 计算文字baseline 
-        float textBaseY = getHeight() - (getHeight() - fontHeight) / 2 - fontMetrics.bottom;
+        float textBaseX = getWidth() / 2 + mLabelPaddingLeft - mLabelPaddingRight;
+        float textBaseY = getHeight() - (getHeight() - fontHeight) / 2 - fontMetrics.bottom + mLabelPaddingTop - mLabelPaddingBottom;
         if(isShowPercentText){//是否显示百分比
-            canvas.drawText(mProgressPercent + "%",getWidth()/2,textBaseY,mTextPaint);
+            canvas.drawText(mProgressPercent + "%",textBaseX,textBaseY,mTextPaint);
         }else if(!TextUtils.isEmpty(mLabelText)){//显示自定义文本
-            canvas.drawText(mLabelText,getWidth()/2,textBaseY,mTextPaint);
+            canvas.drawText(mLabelText,textBaseX,textBaseY,mTextPaint);
         }
 
     }
@@ -579,6 +610,15 @@ public class CircleProgressView extends View {
         invalidate();
     }
 
+    /**
+     * 是否是圆形线冒（圆角弧度）
+     * @param capRound
+     */
+    public void setCapRound(boolean capRound) {
+        isCapRound = capRound;
+        invalidate();
+    }
+
     public int getStartAngle() {
         return mStartAngle;
     }
@@ -609,6 +649,26 @@ public class CircleProgressView extends View {
 
     public String getLabelText() {
         return mLabelText;
+    }
+
+    public void setLabelPaddingLeft(float labelPaddingLeft) {
+        this.mLabelPaddingLeft = labelPaddingLeft;
+        invalidate();
+    }
+
+    public void setLabelPaddingTop(float labelPaddingTop) {
+        this.mLabelPaddingTop = labelPaddingTop;
+        invalidate();
+    }
+
+    public void setLabelPaddingRight(float labelPaddingRight) {
+        this.mLabelPaddingRight = labelPaddingRight;
+        invalidate();
+    }
+
+    public void setLabelPaddingBottom(float labelPaddingBottom) {
+        this.mLabelPaddingBottom = labelPaddingBottom;
+        invalidate();
     }
 
     /**
