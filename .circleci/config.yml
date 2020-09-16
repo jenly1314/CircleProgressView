@@ -3,7 +3,6 @@ jobs:
   build:
     working_directory: ~/code
     docker:
-      - image: circleci/openjdk:8u181-jdk
       - image: circleci/android:api-28
     environment:
       JVM_OPTS: -Xmx3200m
