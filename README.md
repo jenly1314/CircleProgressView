@@ -41,10 +41,10 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 | cpvBlockAngle | integer | 1 | 刻度的角度大小 |
 | cpvTurn | boolean | false | 是否旋转 |
 | cpvCapRound | boolean | true | 是否是圆形线冒（圆角弧度） |
-| arcLabelPaddingLeft | dimension |0dp| 文本居左边内间距 |
-| arcLabelPaddingTop | dimension |0dp| 文本居顶边内间距 |
-| arcLabelPaddingRight | dimension |0dp| 文本居右边内间距 |
-| arcLabelPaddingBottom | dimension |0dp| 文本居底边内间距 |
+| cpvLabelPaddingLeft | dimension |0dp| 文本居左边内间距 |
+| cpvLabelPaddingTop | dimension |0dp| 文本居顶边内间距 |
+| cpvLabelPaddingRight | dimension |0dp| 文本居右边内间距 |
+| cpvLabelPaddingBottom | dimension |0dp| 文本居底边内间距 |
 
 
 ## 引入
@@ -135,11 +135,12 @@ allprojects {
 
    CNBlogs: <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>
 
-   Github: <a title="Github开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a>
+   GitHub: <a title="GitHub开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a>
+
+   Gitee: <a title="Gitee开源项目" href="https://gitee.com/jenly1314" target="_blank">jenly1314</a>
 
    加入QQ群: <a title="点击加入QQ群" href="http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1411582c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad" target="_blank">20867961</a>
    <div>
        <img src="https://jenly1314.github.io/image/jenly666.png">
        <img src="https://jenly1314.github.io/image/qqgourp.png">
    </div>
-
