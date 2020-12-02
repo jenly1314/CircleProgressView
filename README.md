@@ -1,7 +1,7 @@
 # CircleProgressView
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/CircleProgressView/master/app/release/app-release.apk)
-[![JCenter](https://img.shields.io/badge/JCenter-1.1.1-46C018.svg)](https://bintray.com/beta/#/jenly/maven/circleprogressview)
+[![JCenter](https://img.shields.io/badge/JCenter-1.1.2-46C018.svg)](https://bintray.com/beta/#/jenly/maven/circleprogressview)
 [![JitPack](https://jitpack.io/v/jenly1314/CircleProgressView.svg)](https://jitpack.io/#jenly1314/CircleProgressView)
 [![CI](https://travis-ci.org/jenly1314/CircleProgressView.svg?branch=master)](https://travis-ci.org/jenly1314/CircleProgressView)
 [![CircleCI](https://circleci.com/gh/jenly1314/CircleProgressView.svg?style=svg)](https://circleci.com/gh/jenly1314/CircleProgressView)
@@ -54,18 +54,18 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 <dependency>
   <groupId>com.king.view</groupId>
   <artifactId>circleprogressview</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
   <type>pom</type>
 </dependency>
 ```
 ### Gradle:
 ```gradle
-implementation 'com.king.view:circleprogressview:1.1.1'
+implementation 'com.king.view:circleprogressview:1.1.2'
 ```
 
 ### Lvy:
 ```lvy
-<dependency org='com.king.view' name='circleprogressview' rev='1.1.1'>
+<dependency org='com.king.view' name='circleprogressview' rev='1.1.2'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -104,11 +104,14 @@ allprojects {
 
 ## 版本记录
 
+#### v1.1.2：2020-12-2
+*  优化设置渐变色过程处理
+
 #### v1.1.1：2020-4-2
 *  新增cpvLabelPadding..相关属性
 
 #### v1.1.0：2019-8-19
-*  移除appcompat依赖，适配AndroidX
+*  移除appcompat依赖
 
 #### v1.0.1：2019-5-23
 *  新增cpvTurn属性（是否旋转）
