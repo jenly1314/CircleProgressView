@@ -2,6 +2,7 @@
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/CircleProgressView/master/app/release/app-release.apk)
 [![JCenter](https://img.shields.io/badge/JCenter-1.1.2-46C018.svg)](https://bintray.com/beta/#/jenly/maven/circleprogressview)
+[![MavenCentral](https://img.shields.io/maven-central/v/com.github.jenly1314/circleprogressview)](https://repo1.maven.org/maven2/com/github/jenly1314/circleprogressview)
 [![JitPack](https://jitpack.io/v/jenly1314/CircleProgressView.svg)](https://jitpack.io/#jenly1314/CircleProgressView)
 [![CI](https://travis-ci.org/jenly1314/CircleProgressView.svg?branch=master)](https://travis-ci.org/jenly1314/CircleProgressView)
 [![CircleCI](https://circleci.com/gh/jenly1314/CircleProgressView.svg?style=svg)](https://circleci.com/gh/jenly1314/CircleProgressView)
@@ -39,6 +40,7 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 | cpvCirclePadding | dimension | 10dp | 外圆环刻度与内圆环间距 |
 | cpvTickSplitAngle | integer | 5 | 刻度间隔的角度大小 |
 | cpvBlockAngle | integer | 1 | 刻度的角度大小 |
+| cpvTickOffsetAngle | integer | 1 | 刻度偏移的角度大小 |
 | cpvTurn | boolean | false | 是否旋转 |
 | cpvCapRound | boolean | true | 是否是圆形线冒（圆角弧度） |
 | cpvLabelPaddingLeft | dimension |0dp| 文本居左边内间距 |
@@ -49,34 +51,30 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 
 ## 引入
 
-### Maven：
-```maven
-<dependency>
-  <groupId>com.king.view</groupId>
-  <artifactId>circleprogressview</artifactId>
-  <version>1.1.2</version>
-  <type>pom</type>
-</dependency>
-```
 ### Gradle:
-```gradle
-implementation 'com.king.view:circleprogressview:1.1.2'
-```
 
-### Lvy:
-```lvy
-<dependency org='com.king.view' name='circleprogressview' rev='1.1.2'>
-  <artifact name='$AID' ext='pom'></artifact>
-</dependency>
-```
-
-###### 如果Gradle出现compile失败的情况，可以在Project的build.gradle里面添加如下：（也可以使用上面的GitPack来complie）
+1. 在Project的 **build.gradle** 里面添加远程仓库  
+          
 ```gradle
 allprojects {
     repositories {
-        maven { url 'https://dl.bintray.com/jenly/maven' }
+        //...
+        mavenCentral()
     }
 }
+```
+
+2. 在Module的 **build.gradle** 里面添加引入依赖项
+```gradle
+implementation 'com.github.jenly1314:circleprogressview:1.1.3'
+
+```
+
+
+以前发布至JCenter的版本
+
+```gradle
+implementation 'com.king.view:circleprogressview:1.1.2'
 ```
 
 ## 示例
@@ -103,6 +101,10 @@ allprojects {
 更多使用详情，请查看[app](app)中的源码使用示例
 
 ## 版本记录
+
+#### v1.1.3：2021-9-2 (从v1.1.3开始发布至 MavenCentral)
+*  对外暴露更多getter和setter方法
+*  新增cpvTickOffsetAngle属性
 
 #### v1.1.2：2020-12-2
 *  优化设置渐变色过程处理

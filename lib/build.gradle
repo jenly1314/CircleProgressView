@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-apply from: 'bintray.gradle'
+//apply from: 'bintray.gradle'
+apply plugin: "com.vanniktech.maven.publish"
 
 android {
     compileSdkVersion build_versions.compileSdk
@@ -28,8 +29,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation deps.test.junit
-    androidTestImplementation deps.test.runner
-    androidTestImplementation deps.test.espresso
+    testImplementation deps.junit
+    androidTestImplementation deps.runner
+    androidTestImplementation deps.espresso
 
 }

@@ -103,6 +103,11 @@ public class CircleProgressView extends View {
     private int mBlockAngle = 1;
 
     /**
+     * 刻度偏移的角度大小
+     */
+    private float mTickOffsetAngle = 0;
+
+    /**
      * 总刻度数
      */
     private int mTotalTickCount;
@@ -243,6 +248,8 @@ public class CircleProgressView extends View {
                 mTickSplitAngle = a.getInt(attr,mTickSplitAngle);
             }else if(attr == R.styleable.CircleProgressView_cpvBlockAngle){
                 mBlockAngle = a.getInt(attr,mBlockAngle);
+            }else if(attr == R.styleable.CircleProgressView_cpvTickOffsetAngle){
+                mTickOffsetAngle = a.getInt(attr,0);
             }else if(attr == R.styleable.CircleProgressView_cpvTurn){
                 isTurn = a.getBoolean(attr,isTurn);
             }else if(attr == R.styleable.CircleProgressView_cpvCapRound){
@@ -352,7 +359,7 @@ public class CircleProgressView extends View {
                     mPaint.setShader(null);
                     mPaint.setColor(mNormalColor);
                     //绘制外边框刻度
-                    canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+                    canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle + mTickOffsetAngle, mBlockAngle, false, mPaint);
                 }
 
                 for (int i = currentBlockIndex; i < currentBlockIndex + currentBlockIndex; i++) {
@@ -363,7 +370,7 @@ public class CircleProgressView extends View {
                         mPaint.setColor(mProgressColor);
                     }
                     //绘制外边框刻度
-                    canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+                    canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle + mTickOffsetAngle, mBlockAngle, false, mPaint);
                 }
             }else{
                 for (int i = 0; i < mTotalTickCount; i++) {
@@ -375,13 +382,13 @@ public class CircleProgressView extends View {
                             mPaint.setColor(mProgressColor);
                         }
                         //绘制外边框刻度
-                        canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+                        canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle + mTickOffsetAngle, mBlockAngle, false, mPaint);
                     } else if(mNormalColor != 0){
                         //未选中的刻度
                         mPaint.setShader(null);
                         mPaint.setColor(mNormalColor);
                         //绘制外边框刻度
-                        canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle, mBlockAngle, false, mPaint);
+                        canvas.drawArc(rectF, i * (mBlockAngle + mTickSplitAngle) + mStartAngle + mTickOffsetAngle, mBlockAngle, false, mPaint);
                     }
 
                 }
@@ -440,9 +447,9 @@ public class CircleProgressView extends View {
         mTextPaint.setTextAlign(Paint.Align.CENTER);
 
         Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
-        // 计算文字高度 
+        // 计算文字高度
         float fontHeight = fontMetrics.bottom - fontMetrics.top;
-        // 计算文字baseline 
+        // 计算文字baseline
         float textBaseX = getWidth() / 2 + mLabelPaddingLeft - mLabelPaddingRight;
         float textBaseY = getHeight() - (getHeight() - fontHeight) / 2 - fontMetrics.bottom + mLabelPaddingTop - mLabelPaddingBottom;
         if(isShowPercentText){//是否显示百分比
@@ -658,6 +665,36 @@ public class CircleProgressView extends View {
 
     public String getLabelText() {
         return mLabelText;
+    }
+
+    public boolean isShowLabel() {
+        return isShowLabel;
+    }
+
+    public boolean isShowPercentText() {
+        return isShowPercentText;
+    }
+
+    public boolean isShowTick() {
+        return isShowTick;
+    }
+
+    public boolean isTurn() {
+        return isTurn;
+    }
+
+    public boolean isCapRound() {
+        return isCapRound;
+    }
+
+    public void setShowLabel(boolean showLabel) {
+        isShowLabel = showLabel;
+        invalidate();
+    }
+
+    public void setShowPercentText(boolean showPercentText) {
+        isShowPercentText = showPercentText;
+        invalidate();
     }
 
     public void setLabelPaddingLeft(float labelPaddingLeft) {
