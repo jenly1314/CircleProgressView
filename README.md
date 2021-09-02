@@ -40,7 +40,7 @@ CircleProgressView for Android 是一个圆形的进度动画控件，动画效�
 | cpvCirclePadding | dimension | 10dp | 外圆环刻度与内圆环间距 |
 | cpvTickSplitAngle | integer | 5 | 刻度间隔的角度大小 |
 | cpvBlockAngle | integer | 1 | 刻度的角度大小 |
-| cpvTickOffsetAngle | integer | 1 | 刻度偏移的角度大小 |
+| cpvTickOffsetAngle | integer | 0 | 刻度偏移的角度大小 |
 | cpvTurn | boolean | false | 是否旋转 |
 | cpvCapRound | boolean | true | 是否是圆形线冒（圆角弧度） |
 | cpvLabelPaddingLeft | dimension |0dp| 文本居左边内间距 |
